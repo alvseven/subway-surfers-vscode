@@ -3,6 +3,7 @@
   "displayName": "subway-surfers",
   "description": "A simple extension to show a GIF in VSCode",
   "version": "0.0.1",
+  "publisher": "alvseven",
   "engines": {
     "vscode": "^1.89.1"
   },
