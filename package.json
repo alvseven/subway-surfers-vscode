@@ -8,6 +8,7 @@
     "type": "git",
     "url": "https://github.com/alvseven/subway-surfers-vscode.git"
   },
+  "icon": "src/media/subway-surfers-icon.jpg",
   "engines": {
     "vscode": "^1.89.1"
   },
