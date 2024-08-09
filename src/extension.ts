@@ -1,47 +1,52 @@
 import * as vscode from "vscode";
 import * as path from "path";
 
+const gifUrl =
+  "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmMza2Q3MjQxY204MngzdHl2dHhlbmVka3RtdzB3aWV2aWZyaWZ4dyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Fr5LA2RCQbnVp74CxH/giphy.webp";
+
 export function activate(context: vscode.ExtensionContext) {
   let panel: vscode.WebviewPanel | undefined = undefined;
 
-  let disposable = vscode.commands.registerCommand("extension.showGif", () => {
-    if (!panel) {
-      panel = vscode.window.createWebviewPanel(
-        "subwaySurfersGif",
-        "",
-        vscode.ViewColumn.Beside,
-        {
-          enableScripts: true,
-          retainContextWhenHidden: true,
-          enableFindWidget: false,
-          enableCommandUris: false,
-        }
-      );
+  const disposable = vscode.commands.registerCommand(
+    "extension.showGif",
+    () => {
+      if (!panel) {
+        panel = vscode.window.createWebviewPanel(
+          "subwaySurfersGif",
+          "",
+          vscode.ViewColumn.Beside,
+          {
+            enableScripts: true,
+            retainContextWhenHidden: true,
+            enableFindWidget: false,
+            enableCommandUris: false,
+          }
+        );
 
-      const webpPath = vscode.Uri.file(
-        path.join(context.extensionPath, "src", "media", "subway-surfers.webp")
-      );
+        panel.webview.html = getWebviewContent(gifUrl);
 
-      const webviewUri = panel.webview.asWebviewUri(webpPath);
+        panel.iconPath = vscode.Uri.file(
+          path.join(
+            context.extensionPath,
+            "src",
+            "media",
+            "transparent-icon.png"
+          )
+        );
 
-      panel.webview.html = getWebviewContent(webviewUri);
-
-      panel.iconPath = vscode.Uri.file(
-        path.join(context.extensionPath, "src", "media", "transparent-icon.png")
-      );
-
-      panel.onDidDispose(() => {
-        panel = undefined;
-      });
-    } else {
-      panel.reveal(vscode.ViewColumn.Beside);
+        panel.onDidDispose(() => {
+          panel = undefined;
+        });
+      } else {
+        panel.reveal(vscode.ViewColumn.Beside);
+      }
     }
-  });
+  );
 
   context.subscriptions.push(disposable);
 }
 
-function getWebviewContent(webpUri: vscode.Uri): string {
+function getWebviewContent(imageUrl: string): string {
   return `
           <!DOCTYPE html>
           <html lang="en">
@@ -71,7 +76,7 @@ function getWebviewContent(webpUri: vscode.Uri): string {
               </style>
           </head>
           <body>
-              <img src="${webpUri}" />
+              <img src="${imageUrl}" />
           </body>
           </html>
       `;
