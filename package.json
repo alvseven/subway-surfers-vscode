@@ -1,8 +1,8 @@
 {
   "name": "insane-focus-helper",
-  "displayName": "subway-surfers-focus-helper",
+  "displayName": "Subway surfers focus helper",
   "description": "A simple extension to show a GIF in VSCode",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "alvseven",
   "repository": {
     "type": "git",
