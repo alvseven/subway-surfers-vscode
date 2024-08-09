@@ -21,3 +21,7 @@ Hopefully, this extension can help you with :P
 2. Type 'Show Subway Surfers GIF' and press Enter.
 
 3. Enjoy the GIF!
+
+## Inspiration
+
+This extension was created due to [this tweet](https://x.com/ChristoPy_/status/1821595091175411755)
