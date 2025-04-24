@@ -1,6 +1,6 @@
 # Subway-Surfers
 
-Hopefully, this extension can help you with :P
+Hopefully this extension can help you :P
 
 ## Features
 
